@@ -87,6 +87,6 @@ export function getPlugins(options) {
 		production && optimizeGraphPlugin({ publicPath }),
 		minify && minifyCssPlugin({ sourcemap }),
 		production && copyAssetsPlugin({ root }),
-		production && visualize && visualizer({ open: true, gzipSize: true, brotliSize: true })
+		production && visualize && visualizer.default({ open: true, gzipSize: true, brotliSize: true })
 	].filter(Boolean);
 }
