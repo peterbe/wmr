@@ -87,6 +87,13 @@ export function getPlugins(options) {
 		production && optimizeGraphPlugin({ publicPath }),
 		minify && minifyCssPlugin({ sourcemap }),
 		production && copyAssetsPlugin({ root }),
-		production && visualize && visualizer.default({ open: true, gzipSize: true, brotliSize: true })
+		production &&
+			visualize &&
+			visualizer.default({
+				// Don't open in unit tests
+				open: process.env.NODE_ENV !== 'test',
+				gzipSize: true,
+				brotliSize: true
+			})
 	].filter(Boolean);
 }
